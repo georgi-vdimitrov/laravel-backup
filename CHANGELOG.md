@@ -2,6 +2,347 @@
 
 All notable changes to `laravel-backup` will be documented in this file.
 
+## 8.3.3 - 2023-09-04
+
+### What's Changed
+
+- Added missing PT and PT/BR translations by @helderneves91 in https://github.com/spatie/laravel-backup/pull/1709
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.3.2...8.3.3
+
+## 8.3.2 - 2023-08-30
+
+### What's Changed
+
+- Fix for PhpStan by @erikn69 in https://github.com/spatie/laravel-backup/pull/1695
+- Update Laravel & Backup Server docs URL to latest version by @rico-vz in https://github.com/spatie/laravel-backup/pull/1697
+- Return `Command` constants instead of integers in commands by @joshbonnick in https://github.com/spatie/laravel-backup/pull/1706
+- Send one notification on backup failure by @joshbonnick in https://github.com/spatie/laravel-backup/pull/1707
+
+### New Contributors
+
+- @rico-vz made their first contribution in https://github.com/spatie/laravel-backup/pull/1697
+- @joshbonnick made their first contribution in https://github.com/spatie/laravel-backup/pull/1706
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.3.1...8.3.2
+
+## 8.3.1 - 2023-08-10
+
+### What's Changed
+
+- bump php version on phpstan.yml by @erikn69 in https://github.com/spatie/laravel-backup/pull/1693
+- Fix: relative_path too short, example: /app by @erikn69 in https://github.com/spatie/laravel-backup/pull/1694
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.3.0...8.3.1
+
+## 8.3.0 - 2023-08-09
+
+### What's Changed
+
+- Add a retry feature to the `backup` and `clean` commands by @prestamodule in https://github.com/spatie/laravel-backup/pull/1684
+
+### New Contributors
+
+- @prestamodule made their first contribution in https://github.com/spatie/laravel-backup/pull/1684
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.2.0...8.3.0
+
+## 8.2.0 - 2023-08-09
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/spatie/laravel-backup/pull/1681
+- Added configurable gtid purge method by @rcerljenko in https://github.com/spatie/laravel-backup/pull/1689
+
+### New Contributors
+
+- @rcerljenko made their first contribution in https://github.com/spatie/laravel-backup/pull/1689
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.11...8.2.0
+
+## 8.1.11 - 2023-06-02
+
+### What's Changed
+
+- Fix typo in config by @siarheipashkevich in https://github.com/spatie/laravel-backup/pull/1673
+- Fix PhpStan test by @erikn69 in https://github.com/spatie/laravel-backup/pull/1674
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/spatie/laravel-backup/pull/1676
+- Add Hebrew translations. by @gasner in https://github.com/spatie/laravel-backup/pull/1677
+
+### New Contributors
+
+- @siarheipashkevich made their first contribution in https://github.com/spatie/laravel-backup/pull/1673
+- @gasner made their first contribution in https://github.com/spatie/laravel-backup/pull/1677
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.10...8.1.11
+
+## 8.1.10 - 2023-05-02
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/spatie/laravel-backup/pull/1663
+- Updates fa translations by @fsamapoor in https://github.com/spatie/laravel-backup/pull/1664
+
+### New Contributors
+
+- @fsamapoor made their first contribution in https://github.com/spatie/laravel-backup/pull/1664
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.9...8.1.10
+
+## 8.1.9 - 2023-04-25
+
+### What's Changed
+
+- Updated docs "Installation and setup" by @poldixd in https://github.com/spatie/laravel-backup/pull/1658
+- Show accurate list of supported drivers when throwing `CannotCreateDbDumper` exception by @dejagersh in https://github.com/spatie/laravel-backup/pull/1661
+
+### New Contributors
+
+- @poldixd made their first contribution in https://github.com/spatie/laravel-backup/pull/1658
+- @dejagersh made their first contribution in https://github.com/spatie/laravel-backup/pull/1661
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.8...8.1.9
+
+## 8.1.8 - 2023-04-12
+
+### What's Changed
+
+- Add croatian translations. by @kskrlinnorth2 in https://github.com/spatie/laravel-backup/pull/1657
+
+### New Contributors
+
+- @kskrlinnorth2 made their first contribution in https://github.com/spatie/laravel-backup/pull/1657
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.7...8.1.8
+
+## 8.1.7 - 2023-02-03
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/spatie/laravel-backup/pull/1637
+- Update DbDumperFactory.php by @nikosv in https://github.com/spatie/laravel-backup/pull/1640
+
+### New Contributors
+
+- @nikosv made their first contribution in https://github.com/spatie/laravel-backup/pull/1640
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.6...8.1.7
+
+## 8.1.6 - 2023-01-24
+
+### What's Changed
+
+- Fix error an Installation Doc by @thomasdominic in https://github.com/spatie/laravel-backup/pull/1605
+- Update high-level-overview.md by @souravtah in https://github.com/spatie/laravel-backup/pull/1607
+- Update introduction.md by @souravtah in https://github.com/spatie/laravel-backup/pull/1606
+- Add Dependabot Automation by @patinthehat in https://github.com/spatie/laravel-backup/pull/1616
+- fix: zh-TW translation by @hms5232 in https://github.com/spatie/laravel-backup/pull/1584
+- Bump stefanzweifel/git-auto-commit-action from 4.15.0 to 4.15.4 by @dependabot in https://github.com/spatie/laravel-backup/pull/1617
+- Bump ramsey/composer-install from 1 to 2 by @dependabot in https://github.com/spatie/laravel-backup/pull/1618
+- Update Readme Banner by @patinthehat in https://github.com/spatie/laravel-backup/pull/1621
+- Bump stefanzweifel/git-auto-commit-action from 4.15.4 to 4.16.0 by @dependabot in https://github.com/spatie/laravel-backup/pull/1625
+- Fix tests badge by @erikn69 in https://github.com/spatie/laravel-backup/pull/1629
+- Laravel 10.x support by @erikn69 in https://github.com/spatie/laravel-backup/pull/1631
+
+### New Contributors
+
+- @thomasdominic made their first contribution in https://github.com/spatie/laravel-backup/pull/1605
+- @souravtah made their first contribution in https://github.com/spatie/laravel-backup/pull/1607
+- @hms5232 made their first contribution in https://github.com/spatie/laravel-backup/pull/1584
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.5...8.1.6
+
+## 8.1.5 - 2022-10-19
+
+### What's Changed
+
+- Bump stefanzweifel/git-auto-commit-action from 4.14.1 to 4.15.0 by @dependabot in https://github.com/spatie/laravel-backup/pull/1579
+- PHP 8.2 Build by @erikn69 in https://github.com/spatie/laravel-backup/pull/1590
+- corrected some translations by @fadkeabhi in https://github.com/spatie/laravel-backup/pull/1594
+
+### New Contributors
+
+- @fadkeabhi made their first contribution in https://github.com/spatie/laravel-backup/pull/1594
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.4...8.1.5
+
+## 8.1.4 - 2022-10-01
+
+### What's Changed
+
+- docs: replace v7 links with v8 by @tricki in https://github.com/spatie/laravel-backup/pull/1561
+- Update adding-extra-notification-channels.md by @llabbasmkhll in https://github.com/spatie/laravel-backup/pull/1571
+- Italian translations by @massiws in https://github.com/spatie/laravel-backup/pull/1580
+
+### New Contributors
+
+- @llabbasmkhll made their first contribution in https://github.com/spatie/laravel-backup/pull/1571
+- @massiws made their first contribution in https://github.com/spatie/laravel-backup/pull/1580
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.3...8.1.4
+
+## 8.1.3 - 2022-08-04
+
+### What's Changed
+
+- chore: Included githubactions in the dependabot config by @naveensrinivasan in https://github.com/spatie/laravel-backup/pull/1529
+- Add phpstan by @Nielsvanpach in https://github.com/spatie/laravel-backup/pull/1530
+- Bump actions/checkout from 1 to 3 by @dependabot in https://github.com/spatie/laravel-backup/pull/1532
+- Bump stefanzweifel/git-auto-commit-action from 2.3.0 to 4.14.1 by @dependabot in https://github.com/spatie/laravel-backup/pull/1531
+- docs(setup): update default config by @tricki in https://github.com/spatie/laravel-backup/pull/1540
+- Use empty string for Discord defaults by @bbashy in https://github.com/spatie/laravel-backup/pull/1544
+- Improve output messages for backup:monitor command by @intrepidws in https://github.com/spatie/laravel-backup/pull/1560
+
+### New Contributors
+
+- @naveensrinivasan made their first contribution in https://github.com/spatie/laravel-backup/pull/1529
+- @dependabot made their first contribution in https://github.com/spatie/laravel-backup/pull/1532
+- @tricki made their first contribution in https://github.com/spatie/laravel-backup/pull/1540
+- @bbashy made their first contribution in https://github.com/spatie/laravel-backup/pull/1544
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.2...8.1.3
+
+## 8.1.2 - 2022-04-08
+
+## What's Changed
+
+- Update .gitattributes by @angeljqv in https://github.com/spatie/laravel-backup/pull/1514
+- Use non-recursive files() method to test if destination is reachable by @mike-healy in https://github.com/spatie/laravel-backup/pull/1518
+
+## New Contributors
+
+- @angeljqv made their first contribution in https://github.com/spatie/laravel-backup/pull/1514
+- @mike-healy made their first contribution in https://github.com/spatie/laravel-backup/pull/1518
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.1...8.1.2
+
+## 7.8.0 - 2022-03-08
+
+- Exceptions will be reported when creating a back-up fails
+- Notifications will now include the application's environment
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/7.7.3...7.8.0
+
+## 8.1.1 - 2022-03-08
+
+- Exceptions will be reported when creating a back-up fails
+- Notifications will now include the application's environment
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.1.0...8.1.1
+
+## 8.1.0 - 2022-03-08
+
+- Exceptions will be reported when creating a back-up fails
+- Notifications will now include the application's environment
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.10...8.1.0
+
+## 8.0.10 - 2022-03-08
+
+## What's Changed
+
+- Warns the user about old-style config files for backup:list and backup:monitor commands by @bzarzuela in https://github.com/spatie/laravel-backup/pull/1495
+- PHPUnit to Pest Converter by @freekmurze in https://github.com/spatie/laravel-backup/pull/1503
+
+## New Contributors
+
+- @bzarzuela made their first contribution in https://github.com/spatie/laravel-backup/pull/1495
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.9...8.0.10
+
+## 8.0.9 - 2022-03-02
+
+## What's Changed
+
+- Allow any characters in backup destination name by @misakstvanu in https://github.com/spatie/laravel-backup/pull/1499
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.8...8.0.9
+
+## 8.0.8 - 2022-02-23
+
+## What's Changed
+
+- Fix mistakes in cs/notifications.php by @misakstvanu in https://github.com/spatie/laravel-backup/pull/1493
+
+## New Contributors
+
+- @misakstvanu made their first contribution in https://github.com/spatie/laravel-backup/pull/1493
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.7...8.0.8
+
+## 8.0.7 - 2022-02-23
+
+## What's Changed
+
+- Fixes Brazilian Translation by @Diogo-Freitas in https://github.com/spatie/laravel-backup/pull/1490
+
+## New Contributors
+
+- @Diogo-Freitas made their first contribution in https://github.com/spatie/laravel-backup/pull/1490
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.6...8.0.7
+
+## 8.0.6 - 2022-02-18
+
+## What's Changed
+
+- Updates newest_backup_date and oldest_backup_date by @opengis in https://github.com/spatie/laravel-backup/pull/1487
+
+## New Contributors
+
+- @opengis made their first contribution in https://github.com/spatie/laravel-backup/pull/1487
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.5...8.0.6
+
+## 8.0.5 - 2022-02-13
+
+## What's Changed
+
+- Check if backup destination is reachable before trying to copy backup by @smknstd in https://github.com/spatie/laravel-backup/pull/1469
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.4...8.0.5
+
+## 8.0.4 - 2022-02-13
+
+## What's Changed
+
+- Fix issue where local backups were included in new backups by @Diagnost1X in https://github.com/spatie/laravel-backup/pull/1486
+
+## New Contributors
+
+- @Diagnost1X made their first contribution in https://github.com/spatie/laravel-backup/pull/1486
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.3...8.0.4
+
+## 8.0.3 - 2022-02-10
+
+## What's Changed
+
+- fix Russian translation by @sshkpp in https://github.com/spatie/laravel-backup/pull/1482
+
+## New Contributors
+
+- @sshkpp made their first contribution in https://github.com/spatie/laravel-backup/pull/1482
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.2...8.0.3
+
+## 8.0.2 - 2022-02-10
+
+## What's Changed
+
+- Drop offered flysystem version that is uninstallable by @abenerd in https://github.com/spatie/laravel-backup/pull/1460
+- Make ext-pcntl optional by @erikn69 in https://github.com/spatie/laravel-backup/pull/1481
+
+## New Contributors
+
+- @abenerd made their first contribution in https://github.com/spatie/laravel-backup/pull/1460
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.0.1...8.0.2
+
+## 8.0.1 - 2022-01-21
+
+- add Bulgarian translation
+
 ## 8.0.0 - 2022-01-12
 
 - add support for Laravel 9

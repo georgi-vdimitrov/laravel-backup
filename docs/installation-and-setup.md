@@ -156,8 +156,11 @@ return [
         /*
          * The encryption algorithm to be used for archive encryption.
          * You can set it to `null` or `false` to disable encryption.
+         *
+         * When set to 'default', we'll use ZipArchive::EM_AES_256 if it is
+         * available on your system.
          */
-        'encryption' => \ZipArchive::EM_AES_256,
+        'encryption' => 'default',
     ],
 
     /*
@@ -165,7 +168,7 @@ return [
      * For Slack you need to install laravel/slack-notification-channel.
      *
      * You can also use your own notification classes, just make sure the class is named after one of
-     * the `Spatie\Backup\Events` classes.
+     * the `Spatie\Backup\Notifications\Notifications` classes.
      */
     'notifications' => [
 
@@ -205,6 +208,20 @@ return [
 
             'icon' => null,
 
+        ],
+
+        'discord' => [
+            'webhook_url' => '',
+
+            /*
+             * If this is an empty string, the name field on the webhook will be used.
+             */
+            'username' => '',
+
+            /*
+             * If this is an empty string, the avatar on the webhook will be used.
+             */
+            'avatar_url' => '',
         ],
     ],
 
@@ -281,12 +298,13 @@ return [
             'delete_oldest_backups_when_using_more_megabytes_than' => 5000,
         ],
     ],
+
 ];
 ```
 
 ## Configuring the backup disk
 
-By default, the backup will be saved into the `public/laravel-backup/` directory of your laravel application. This folder most probably is configured to be public.
+By default, the backup will be saved into the `storage/app/Laravel/` directory of your laravel application.
 We recommend that you create a disk named `backups` (you can use any name you prefer) in `filesystems.php` and specify that name in the `disk` key of the `backup.php` config file.
 
 ## Scheduling
@@ -326,7 +344,7 @@ If your application is broken, the scheduled jobs cannot run anymore. You might 
 
 To find out about problems with your backups, the package ships with monitoring functionality. It will inform you when backups become too old or when they take up too much storage.
 
-Learn how to [set up monitoring](/laravel-backup/v7/monitoring-the-health-of-all-backups/overview).
+Learn how to [set up monitoring](/laravel-backup/v8/monitoring-the-health-of-all-backups/overview).
 
 ## Dumping the database
 `mysqldump` is used to backup MySQL databases. `pg_dump` is used to dump PostgreSQL databases. If these binaries are not installed in a default location, you can add a key named `dump.dump_binary_path` in Laravel's own `database.php` config file. **Only fill in the path to the binary**. Do not include the name of the binary itself.

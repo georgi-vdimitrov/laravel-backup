@@ -8,11 +8,11 @@ use Generator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Spatie\Backup\BackupDestination\BackupDestination;
-use Spatie\Backup\Events\BackupHasFailed;
 use Spatie\Backup\Events\BackupManifestWasCreated;
 use Spatie\Backup\Events\BackupWasSuccessful;
 use Spatie\Backup\Events\BackupZipWasCreated;
 use Spatie\Backup\Events\DumpingDatabase;
+use Spatie\Backup\Exceptions\BackupFailed;
 use Spatie\Backup\Exceptions\InvalidBackupJob;
 use Spatie\DbDumper\Compressors\GzipCompressor;
 use Spatie\DbDumper\Databases\MongoDb;
@@ -134,6 +134,9 @@ class BackupJob
         return $this;
     }
 
+    /**
+     * @throws Exception
+     */
     public function run(): void
     {
         $temporaryDirectoryPath = config('backup.backup.temporary_directory') ?? storage_path('app/backup-temp');
@@ -167,13 +170,11 @@ class BackupJob
 
             $this->copyToBackupDestinations($zipFile);
         } catch (Exception $exception) {
-            consoleOutput()->error("Backup failed because {$exception->getMessage()}." . PHP_EOL . $exception->getTraceAsString());
-
-            $this->sendNotification(new BackupHasFailed($exception));
+            consoleOutput()->error("Backup failed because: {$exception->getMessage()}." . PHP_EOL . $exception->getTraceAsString());
 
             $this->temporaryDirectory->delete();
 
-            throw $exception;
+            throw BackupFailed::from($exception);
         }
 
         $this->temporaryDirectory->delete();
@@ -208,9 +209,9 @@ class BackupJob
     protected function directoriesUsedByBackupJob(): array
     {
         return $this->backupDestinations
-            ->filter(fn (BackupDestination $backupDestination) => $backupDestination->filesystemType() === 'local')
+            ->filter(fn (BackupDestination $backupDestination) => $backupDestination->filesystemType() === 'localfilesystemadapter')
             ->map(
-                fn (BackupDestination $backupDestination) => $backupDestination->disk()->getDriver()->getAdapter()->applyPathPrefix('') . $backupDestination->backupName()
+                fn (BackupDestination $backupDestination) => $backupDestination->disk()->path('') . $backupDestination->backupName()
             )
             ->each(fn (string $backupDestinationDirectory) => $this->fileSelection->excludeFilesFrom($backupDestinationDirectory))
             ->push($this->temporaryDirectory->path())
@@ -278,11 +279,18 @@ class BackupJob
             ->toArray();
     }
 
+    /**
+     * @throws Exception
+     */
     protected function copyToBackupDestinations(string $path): void
     {
         $this->backupDestinations
             ->each(function (BackupDestination $backupDestination) use ($path) {
                 try {
+                    if (! $backupDestination->isReachable()) {
+                        throw new Exception("Could not connect to disk {$backupDestination->diskName()} because: {$backupDestination->connectionError()}");
+                    }
+
                     consoleOutput()->info("Copying zip to disk named {$backupDestination->diskName()}...");
 
                     $backupDestination->write($path);
@@ -293,7 +301,7 @@ class BackupJob
                 } catch (Exception $exception) {
                     consoleOutput()->error("Copying zip failed because: {$exception->getMessage()}.");
 
-                    $this->sendNotification(new BackupHasFailed($exception, $backupDestination ?? null));
+                    throw BackupFailed::from($exception)->destination($backupDestination);
                 }
             });
     }

@@ -40,12 +40,14 @@ class DbDumperFactory
 
         $dbDumper = static::forDriver($dbConfig['driver'] ?? '')
             ->setHost(Arr::first(Arr::wrap($dbConfig['host'] ?? '')))
-            ->setDbName($dbConfig['database'])
+            ->setDbName($dbConfig['connect_via_database'] ?? $dbConfig['database'])
             ->setUserName($dbConfig['username'] ?? '')
             ->setPassword($dbConfig['password'] ?? '');
 
         if ($dbDumper instanceof MySql) {
-            $dbDumper->setDefaultCharacterSet($dbConfig['charset'] ?? '');
+            $dbDumper
+                ->setDefaultCharacterSet($dbConfig['charset'] ?? '')
+                ->setGtidPurged($dbConfig['dump']['mysql_gtid_purged'] ?? 'AUTO');
         }
 
         if ($dbDumper instanceof MongoDb) {

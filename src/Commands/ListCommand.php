@@ -17,11 +17,17 @@ class ListCommand extends BaseCommand
     /** @var string */
     protected $description = 'Display a list of all backups.';
 
-    public function handle()
+    public function handle(): int
     {
+        if (config()->has('backup.monitorBackups')) {
+            $this->warn("Warning! Your config file still uses the old monitorBackups key. Update it to monitor_backups.");
+        }
+
         $statuses = BackupDestinationStatusFactory::createForMonitorConfig(config('backup.monitor_backups'));
 
         $this->displayOverview($statuses)->displayFailures($statuses);
+
+        return static::SUCCESS;
     }
 
     protected function displayOverview(Collection $backupDestinationStatuses)
