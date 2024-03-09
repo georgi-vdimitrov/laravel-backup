@@ -2,6 +2,86 @@
 
 All notable changes to `laravel-backup` will be documented in this file.
 
+## 8.6.0 - 2024-02-06
+
+### What's Changed
+
+* Add Support for Laravel 11 by @stefanzweifel in https://github.com/spatie/laravel-backup/pull/1757
+
+### New Contributors
+
+* @stefanzweifel made their first contribution in https://github.com/spatie/laravel-backup/pull/1757
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.5.1...8.6.0
+
+## 8.5.1 - 2024-01-23
+
+### What's Changed
+
+* Fix duplicate Portuguese translations for backup dates by @ricardo-lobo in https://github.com/spatie/laravel-backup/pull/1752
+
+### New Contributors
+
+* @ricardo-lobo made their first contribution in https://github.com/spatie/laravel-backup/pull/1752
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.5.0...8.5.1
+
+## 8.5.0 - 2024-01-11
+
+### What's Changed
+
+* Fix translations for keys newest_backup_date and oldest_backup_date on tr language by @sdkakcy in https://github.com/spatie/laravel-backup/pull/1743
+* nunomaduro/larastan abandoned by @parth391 in https://github.com/spatie/laravel-backup/pull/1742
+* Made it possible to run the backup, cleanup and monitor commands in isolated mode by @pieterclaerhout in https://github.com/spatie/laravel-backup/pull/1751
+
+### New Contributors
+
+* @sdkakcy made their first contribution in https://github.com/spatie/laravel-backup/pull/1743
+* @pieterclaerhout made their first contribution in https://github.com/spatie/laravel-backup/pull/1751
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.4.1...8.5.0
+
+## 8.4.1 - 2023-11-20
+
+### What's Changed
+
+- Improve strategy comments by @iwasherefirst2 in https://github.com/spatie/laravel-backup/pull/1728
+- Bump stefanzweifel/git-auto-commit-action from 4.16.0 to 5.0.0 by @dependabot in https://github.com/spatie/laravel-backup/pull/1730
+- Korean Language added by @corean in https://github.com/spatie/laravel-backup/pull/1740
+
+### New Contributors
+
+- @iwasherefirst2 made their first contribution in https://github.com/spatie/laravel-backup/pull/1728
+- @corean made their first contribution in https://github.com/spatie/laravel-backup/pull/1740
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.4.0...8.4.1
+
+## 8.4.0 - 2023-10-17
+
+### What's Changed
+
+- Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/spatie/laravel-backup/pull/1716
+- Possibility of adding timestamp to database dump filename by @boryn in https://github.com/spatie/laravel-backup/pull/1717
+- Possibility of choosing zip compression method by @boryn in https://github.com/spatie/laravel-backup/pull/1718
+
+### New Contributors
+
+- @boryn made their first contribution in https://github.com/spatie/laravel-backup/pull/1717
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.3.4...8.4.0
+
+## 8.3.4 - 2023-09-18
+
+### What's Changed
+
+- Move registering events to "booted" rather than "registered" by @modstore in https://github.com/spatie/laravel-backup/pull/1712
+
+### New Contributors
+
+- @modstore made their first contribution in https://github.com/spatie/laravel-backup/pull/1712
+
+**Full Changelog**: https://github.com/spatie/laravel-backup/compare/8.3.3...8.3.4
+
 ## 8.3.3 - 2023-09-04
 
 ### What's Changed

@@ -310,6 +310,23 @@ it('renames database dump file extension when specified', function () {
     app()['db']->disconnect();
 });
 
+it('appends timestamp to database backup file name', function () {
+    config()->set('backup.backup.source.databases', ['db1']);
+    config()->set('backup.backup.database_dump_file_timestamp_format', 'Y-m-d-H-i-s');
+
+    $this->setUpDatabase(app());
+
+    $this->artisan('backup:run --only-db')->assertExitCode(0);
+
+    $this->assertExactPathExistsInZip('local', $this->expectedZipPath, 'db-dumps/sqlite-db1-database-2016-01-01-21-01-01.sql');
+
+    /*
+     * Close the database connection to unlock the sqlite file for deletion.
+     * This prevents the errors from other tests trying to delete and recreate the folder.
+     */
+    app()['db']->disconnect();
+});
+
 it('should trigger the backup failed event', function () {
     // use an invalid dbname to trigger failure
     $this->artisan('backup:run --only-db --db-name=wrongName')->assertExitCode(1);
@@ -355,6 +372,45 @@ it('will encrypt backup when notifications are disabled', function () {
     $zip->close();
 
     Event::assertNotDispatched(BackupZipWasCreated::class);
+});
+
+it('can use different compression methods for backup file', function () {
+    config()->set('backup.backup.source.databases', ['db1']);
+
+    // by default (with no destination.compression_method specified), the ZipArchive::CM_DEFLATE is used
+    $this->artisan('backup:run --only-db')->assertExitCode(0);
+
+    $zip = new ZipArchive();
+    $zip->open(Storage::disk('local')->path($this->expectedZipPath));
+    expect($zip->numFiles)->toBe(1);
+    expect($zip->statIndex(0)['comp_method'])->toBe(ZipArchive::CM_DEFLATE);
+    $zip->close();
+
+
+    // check no compression with ZipArchive::CM_STORE method
+    config()->set('backup.backup.destination.compression_method', ZipArchive::CM_STORE);
+    config()->set('backup.backup.destination.compression_level', 0);
+
+    $this->artisan('backup:run --only-db')->assertExitCode(0);
+
+    $zip = new ZipArchive();
+    $zip->open(Storage::disk('local')->path($this->expectedZipPath));
+    expect($zip->numFiles)->toBe(1);
+    expect($zip->statIndex(0)['comp_method'])->toBe(ZipArchive::CM_STORE);
+    $zip->close();
+
+
+    // check ZipArchive::CM_DEFLATE method with custom compression level
+    config()->set('backup.backup.destination.compression_method', ZipArchive::CM_DEFLATE);
+    config()->set('backup.backup.destination.compression_level', 2);
+
+    $this->artisan('backup:run --only-db')->assertExitCode(0);
+
+    $zip = new ZipArchive();
+    $zip->open(Storage::disk('local')->path($this->expectedZipPath));
+    expect($zip->numFiles)->toBe(1);
+    expect($zip->statIndex(0)['comp_method'])->toBe(ZipArchive::CM_DEFLATE);
+    $zip->close();
 });
 
 it('excludes the previous local backups from the backup', function () {
